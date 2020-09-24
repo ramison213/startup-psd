@@ -1,3 +1,5 @@
+// Burger
+
 let iconMenu = document.querySelector('.icon-menu');
 let navList = document.querySelector('.navigation__list');
 
@@ -11,34 +13,15 @@ iconMenu.addEventListener('click', () => {
     toggleBurger();
 });
 
+// filter buttons
 
-// show modals
+let $filterBtns = document.querySelectorAll('.filter__button');
 
-document.querySelectorAll('.modal-btn') // получаем кнопки открытия модалки
-	.forEach(btn => {
-		btn.addEventListener('click', () => {
-			let $popup = document.querySelector('#' + btn.dataset.popupname); // получаем data- атрибут кнопки и по нему выбираем конкретное модальное окно
+$filterBtns.forEach($filterBtn => {
+    $filterBtn.addEventListener('click', () => {
+        document.querySelector('.filter__button--active').classList.remove('filter__button--active');
+        $filterBtn.classList.toggle('filter__button--active');
+    })
+});
 
-            $popup.hidden = false; // открываем модалку
-            document.body.classList.toggle('lock');
-		});
-	})
-
-document.querySelectorAll('.modal') // выбираем все оверлеи модалок
-	.forEach($modal => {
-		$modal.addEventListener('click', () => {
-            $modal.hidden = true;
-            document.body.classList.toggle('lock');
-		})
-
-		let $modalContent = $modal.querySelector('.modal__content'); // получаем само окно
-
-		$modalContent.addEventListener('click', elem => {
-			elem.stopPropagation();
-		})
-
-		$modalContent.querySelector('.modal__close').addEventListener('click', () => {
-            $modal.hidden = true;
-            document.body.classList.toggle('lock');
-		})
-	})
+//
